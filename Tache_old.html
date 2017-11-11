@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="fr" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Création Tâche">
+    <link rel="shortcut icon" sizes="16x16" href="favicon_qp2.png"/>
+    <style type="text/css">
+        
+        :root {
+            --color-all:black;
+            --color-main: rgb(219, 68,55);
+            --color-reponse:rgb(121, 121, 121);
+            --color-bg-bottom:rgb(251, 233, 231);
+            --font-size-main:1.6rem;
+            --font-size-reponse:1.4rem;
+            --main-font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        html {
+            font-size: 62.5%;
+            }
+
+        body {
+            width:100%;
+            background: var(--color-bg-bottom);
+            margin:0 0 0 0;
+            font-family: var(--main-font-family);
+            color: var(--color-all); 
+            }
+        
+        /* BACKGROUND */
+        .top{
+            height:100%; width:100%;
+            background: var(--color-main);
+            }
+                
+        .bottom {
+            height: 100%; width:100%;
+            background: var(--color-bg-bottom);
+            }
+ 
+        /* CORPS DE LA PAGE */
+         header {
+            width: 90%;
+            margin-left: auto; margin-right: auto;
+            padding:0.5rem 0 0.5rem 0;
+            text-align: left; 
+            background: white;
+            -webkit-box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            -moz-box-shadow:    3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            box-shadow:         3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            }
+
+        ul#menu_horizontal li { 
+            display : inline;
+            padding : 0 1rem; /* Pour espacer les boutons entre eux */
+        }
+        ul#menu_horizontal {
+            list-style-type : none; /* Car sinon les puces se placent n'importe où */
+        }
+
+
+        .link1{
+            color: var(--color-all);
+            text-decoration:none;
+            font-size:2rem;
+            font-family: var(--main-font-family);
+
+        }
+        .link2{
+            color: var(--color-reponse);  
+            text-decoration:none;
+            font-size:var(--font-size-main);
+            font-family: var(--main-font-family);
+        }
+
+
+    /* MISE EN FORME FORM */
+
+        form {
+            width:90%;
+            margin-left: auto; margin-right: auto;
+            -webkit-box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            -moz-box-shadow:    3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            box-shadow:         3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            background: #fff; }
+    
+    /* MISE EN FORME LABEL */
+
+        .classlabel {
+            height:30px;
+            width:86%;
+            margin-top:0.8rem;
+            margin-left:7%;
+            font-size: var(--font-size-main); 
+            font-family: var(--main-font-family);
+            display:inline-block; }
+
+    /* MISE EN FORME IMPUT */
+
+        .classimput {
+            height:30px;
+            width:86%;
+            margin-left:7%;
+            font-size: var(--font-size-reponse);            
+            border: 0;
+            color: var(--color-reponse);
+            background: transparent;
+            display:inline-block; }
+
+        input::placeholder {
+            color: var(--color-reponse);
+            font-family: var(--main-font-family);
+            font-size: var(--font-size-reponse); 
+            }
+        
+    /* MISE EN FORME RADIO */
+
+        .divradio {
+            margin-left: 7%;
+        }
+
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="radio"]:checked + label,
+        [type="radio"]:not(:checked) + label
+        {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            line-height: 20px;
+            display: inline-block;
+            color: #666;
+        }
+        [type="radio"]:checked + label:before,
+        [type="radio"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #ddd;
+            border-radius: 100%;
+            background: #fff;
+        }
+        [type="radio"]:checked + label:after,
+        [type="radio"]:not(:checked) + label:after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--color-main);
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        [type="radio"]:not(:checked) + label:after {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        [type="radio"]:checked + label:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .labelradio{
+            width:20%;
+            font-size: 1.2rem; 
+            color: rgb(121, 121, 121);
+            font-family: var(--main-font-family);            
+            }
+    
+    /* MISE EN FORME DATE */
+
+        .classdate {
+            height:20px;
+            width:86%;
+            margin-left:7%;
+            font-size: var(--font-size-reponse); 
+            font-family: var(--main-font-family);
+            border: 0;
+            color: var(--color-reponse);
+            background: transparent;
+            /*display:inline-block; Fout en l'air la mise en forme*/
+        }
+
+        input[type="date"]:before {
+            content: attr(placeholder) !important;
+            color: var(--color-reponse);
+            margin-right: 0.5em;
+        }
+        
+        input[type="date"]:focus:before,
+        input[type="date"]:valid:before {
+            content: "" !important;
+            }
+
+    /* MISE EN FORME CHECKBOX */
+
+            /* Cachons la case à cocher */
+            [type="checkbox"]:not(:checked),
+            [type="checkbox"]:checked {
+                position: absolute;
+                left: -9999px;
+            }
+            
+            /* on prépare le label */
+            [type="checkbox"]:not(:checked) + label,
+            [type="checkbox"]:checked + label {
+                position: relative; /* permet de positionner les pseudo-éléments */
+                padding-left: 25px; /* fait un peu d'espace pour notre case à venir */
+                font-size: var(--font-size-reponse);
+                color: var(--color-reponse);
+                vertical-align: middle;
+                font-family: var(--main-font-family);
+                cursor: pointer;    /* affiche un curseur adapté */
+            }
+
+            /* Aspect des checkboxes */
+            /* :before sert à créer la case à cocher */
+            [type="checkbox"]:not(:checked) + label:before,
+            [type="checkbox"]:checked + label:before {
+                content: '';
+                position: absolute;
+                left:0; top: 0px;
+                width: 14px; height: 14px; /* dim. de la case */
+                border: 1px solid #ddd;
+                font-size: var(--font-size-reponse);
+                background: #fff;
+                border-radius: 3px; /* angles arrondis */
+                /*box-shadow: inset 0 1px 3px rgba(0,0,0,.3) /* légère ombre interne */
+                }
+                
+                /* Aspect général de la coche */
+            [type="checkbox"]:not(:checked) + label:after,
+            [type="checkbox"]:checked + label:after {
+                content: '✔';
+                position: absolute;
+                top: -2px; left: 2px;
+                color: var(--color-main);
+                transition: all .2s; /* on prévoit une animation */
+                }
+                /* Aspect si "pas cochée" */
+            [type="checkbox"]:not(:checked) + label:after {
+                opacity: 0; /* coche invisible */
+                transform: scale(0); /* mise à l'échelle à 0 */
+                }
+
+                /* Aspect si "cochée" */
+            [type="checkbox"]:checked + label:after {
+                opacity: 1; /* coche opaque */
+                transform: scale(1); /* mise à l'échelle 1:1 */
+                }
+
+            /* aspect désactivée */
+            [type="checkbox"]:disabled:not(:checked) + label:before,
+            [type="checkbox"]:disabled:checked + label:before {
+                box-shadow: none;
+                border-color: #bbb;
+                background-color: #ddd;
+            }
+            /* styles de la coche (si cochée/désactivée) */
+            [type="checkbox"]:disabled:checked + label:after {
+                color: #999;
+            }
+            /* on style aussi le label quand désactivé */
+            [type="checkbox"]:disabled + label {
+                color: #aaa;
+            }
+            
+            /* aspect au focus de l'élément */
+            [type="checkbox"]:checked:focus + label:before,
+            [type="checkbox"]:not(:checked):focus + label:before {
+                border: 1px solid #ddd;
+            }
+
+        /* FIN MISE EN FORME CHECKBOX */
+
+
+        section1 {
+            margin-left:7%;
+            float: left;
+            width: 42%;
+            text-align: left;
+            display:inline-block; }
+
+        section0 {
+            float: left;
+            width: 52%;
+            text-align: left;
+            margin-left:10px;
+            display:inline-block; }
+
+        .button-success {
+            color: white;
+            border-radius: 0px;
+            border: 0;
+            height:30px;
+            width:130px;
+            text-align: center;
+            background: rgb(66, 133, 244); 
+            box-shadow:none;
+        }
+
+        .button-xlarge {
+            font-size: var(--font-size-main); 
+            font-weight:300;
+            font-family: var(--main-font-family);}
+        button {
+            float: right; }
+
+        h2{
+            width:90%;
+            text-indent:2rem;
+            font-weight:100;
+            padding:1.5rem 0 1.5rem 0;
+            margin-left:auto ; margin-right:auto;
+            font-family: var(--main-font-family);
+            font-size: var(--font-size-main);
+            -webkit-box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            -moz-box-shadow:    3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            box-shadow:         3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+            background: #fff; }
+
+        }
+    </style>
+
+    <title>Création Tâche</title>
+</head>
+
+<body>
+    <div class="top"></br>
+        <header>
+            <ul id="menu_horizontal">
+            <li><a class="link1" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">Tâche</a></li>
+            <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XRGs3bjNHMENoWTA">Elec</a></li>
+            <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">Ndf</a></li>
+            <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">CJoint</a></li>
+            </ul>
+        </header></div>
+    <div class="bottom">
+
+        <form id="form_suivi" method="POST" action="https://script.google.com/macros/s/AKfycbxKWN0e2adN29p9x4TuLdqsoonGjzRpwIHeiL0OfgR-e4Il3Vc/exec">
+
+            <label for="Libelle" class="classlabel">Libellé</label></br>
+            <input id="Libelle" name="Libelle" class="classimput" placeholder="Libellé de la tâche"  autocomplete="off"></br>
+
+            <label for="Priorite" class="classlabel">Timing</label></br>
+            
+            <div class="divradio">
+                <input type="radio" name="Priorite" value="Heures" id="Heures">
+                <label for="Heures" class="labelradio">Heures</label>
+                
+                <input type="radio" name="Priorite" value="Jours" id="Jours">
+                <label for="Jours" class="labelradio">Jours</label>
+                
+                <input type="radio" name="Priorite" value="Semaines" id="Semaines">
+                <label for="Semaines" class="labelradio">Semaines</label>
+            </div>
+            </br>
+
+            <label for="date" class="classlabel">Echéance</label></br>
+
+            <input type="date" name="Echeance" placeholder="Choisir une date" class="classdate"/>
+                        
+            <label for="Interlocuteurs" class="classlabel">Interlocuteurs</label> </br>
+            <section1>
+                <input type="checkbox" id="BET" name="BET"><label for="BET">Bureau d'étude</label></br>
+                <input type="checkbox" id="ACH" name="ACH"><label for="ACH">Achat</label></br>
+                <input type="checkbox" id="CAD" name="CAD"><label for="CAD">Cadeau</label></br>
+                <input type="checkbox" id="RH" name="RH"><label for="RH">RH</label></br>
+                <input type="checkbox" id="GC" name="GC"><label for="GC">GC</label></br>
+                <input type="checkbox" id="GES" name="GES"><label for="GES">Compta Gestion</label></br>
+                <input type="checkbox" id="OTH" name="OTH"><label for="OTH">Autres</label></br>
+            </section1>
+            <section2>
+                <input type="checkbox" id="GRA" name="GRA"><label for="GRA">Graphique</label></br>
+                <input type="checkbox" id="ELE" name="ELE"><label for="ELE">Elec</label></br>
+                <input type="checkbox" id="MER" name="MER"><label for="MER">MER</label></br>
+                <input type="checkbox" id="SST" name="SST"><label for="SST">Fournisseur / SST</label></br>
+                <input type="checkbox" id="MOU" name="MOU"><label for="MOU">Client (MOE/MOU)</label></br>
+                <input type="checkbox" id="DIR" name="DIR"><label for="DIR">Direction</label></br>
+            </section2>
+        </br>
+
+        <label for="Traitement" class="classlabel">Traitement</label></br>
+        
+        <select name="Traitement" id="Traitement" class="classimput">
+                <option value="">Traitement</option>
+                <option value="Production Perso">Prod</option>
+                <option value="Mail">Mail</option>
+                <option value="Tel">Tel</option>        
+                <option value="Courrier">Courrier</option>        
+                <option value="Réunion Entrevue">Reunion</option>        
+                <option value="Diffusion (Websis,...)">Diff</option>        
+                <option value="Autres">Autres</option>        
+        </select></br></br>
+
+        <button class="button-success pure-button button-xlarge">
+                <i></i>&nbsp;Envoyer</button>
+
+        </form>
+
+  <!-- Validation -->
+  <div style="display:none;" id="message_validation">
+    <h2>Tâche correctement enregistrée </h2>
+  </div>
+
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script type="text/javascript">
+  
+    // get all data in form and return object
+    function getFormData() {
+        var form = document.getElementById("form_suivi");
+        var elements = form.elements; // all form elements
+        var fields = Object.keys(elements).map(function(k) {
+            if(elements[k].name !== undefined) {
+                return elements[k].name;
+                // special case for Edge's html collection
+            }else if(elements[k].length > 0){
+                return elements[k].item(0).name;
+            }
+        })
+        .filter(function(item, pos, self) {
+            return self.indexOf(item) == pos && item;
+        });
+
+        var data = {};
+        fields.forEach(function(k){
+            data[k] = elements[k].value;
+            var str = ""; // declare empty string outside of loop to allow it to be appended to for each item in the loop
+            var str2 ="";
+            if(elements[k].type === "checkbox"){ // special case for Edge's html collection
+                if(elements[k].checked === false){
+                    str2 = ""}
+                else{str2="X"}
+                str = str + str2 + ", "; // take the string and append the current checked value to the end of it, along with a comma and a space
+                data[k] = str.slice(0, -2); // remove the last comma and space from the  string to make the output prettier in the spreadsheet
+            }else if(elements[k].length){
+                for(var i = 0; i < elements[k].length; i++){
+                    if(elements[k].item(i).checked){
+                        str = str + elements[k].item(i).value + ", "; // same as above
+                        data[k] = str.slice(0, -2);
+                    }
+                }
+            }
+        });
+
+        // add form-specific values into the data
+        data.formDataNameOrder = JSON.stringify(fields);
+        data.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+
+        console.log(data);
+        return data;
+    }
+
+    function handleFormSubmit(event) {  // handles form submit withtout any jquery
+        event.preventDefault();           // we are submitting via xhr below
+        var data = getFormData();         // get the values submitted in the form
+        var url = event.target.action;  //
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        // xhr.withCredentials = true;
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            console.log( xhr.status, xhr.statusText )
+            console.log(xhr.responseText);
+            document.getElementById('form_suivi').style.display = 'none'; // hide form
+            document.getElementById('message_validation').style.display = 'block';
+            return;
+        };
+        // url encode form data for sending as post data
+        var encoded = Object.keys(data).map(function(k) {
+            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+        }).join('&')
+        xhr.send(encoded);
+    }
+
+    function loaded() {
+        console.log('contact form submission handler loaded successfully');
+        // bind to the submit event of our form
+        var form = document.getElementById('form_suivi');
+        form.addEventListener("submit", handleFormSubmit, false);
+        };
+    document.addEventListener('DOMContentLoaded', loaded, false);
+
+  </script>
+</div>
+</body>
+</html>

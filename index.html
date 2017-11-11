@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Création Tâche">
+    <link rel="shortcut icon" sizes="16x16" href="favicon_qp2.png"/>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pers_App</title>
+</head>
+
+<body>
+    <div class="top"></br>
+        <header>
+            <ul id="menu_horizontal">
+            <li><a class="link1" href="index.html">Tâche</a></li>
+            <li><a class="link2" href="Compteur.html">Elec</a></li>
+            <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">Ndf</a></li>
+            <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">CJoint</a></li>
+            </ul>
+        </header></div>
+    <div class="bottom">
+
+        <form id="form_suivi" method="POST" action="https://script.google.com/macros/s/AKfycbxKWN0e2adN29p9x4TuLdqsoonGjzRpwIHeiL0OfgR-e4Il3Vc/exec">
+
+            <label for="Libelle" class="classlabel">Libellé</label></br>
+            <input id="Libelle" name="Libelle" class="classimput" placeholder="Libellé de la tâche"  autocomplete="off"></br>
+
+            <label for="Priorite" class="classlabel">Timing</label></br>
+            
+            <div class="divradio">
+                <input type="radio" name="Priorite" value="Heures" id="Heures">
+                <label for="Heures" class="labelradio">Heures</label>
+                
+                <input type="radio" name="Priorite" value="Jours" id="Jours">
+                <label for="Jours" class="labelradio">Jours</label>
+                
+                <input type="radio" name="Priorite" value="Semaines" id="Semaines">
+                <label for="Semaines" class="labelradio">Semaines</label>
+            </div>
+            </br>
+
+            <label for="date" class="classlabel">Echéance</label></br>
+
+            <input type="date" name="Echeance" placeholder="Choisir une date" class="classdate"/>
+                        
+            <label for="Interlocuteurs" class="classlabel">Interlocuteurs</label> </br>
+            <section1>
+                <input type="checkbox" id="BET" name="BET"><label for="BET">Bureau d'étude</label></br>
+                <input type="checkbox" id="ACH" name="ACH"><label for="ACH">Achat</label></br>
+                <input type="checkbox" id="CAD" name="CAD"><label for="CAD">Cadeau</label></br>
+                <input type="checkbox" id="RH" name="RH"><label for="RH">RH</label></br>
+                <input type="checkbox" id="GC" name="GC"><label for="GC">GC</label></br>
+                <input type="checkbox" id="GES" name="GES"><label for="GES">Compta Gestion</label></br>
+                <input type="checkbox" id="OTH" name="OTH"><label for="OTH">Autres</label></br>
+            </section1>
+            <section2>
+                <input type="checkbox" id="GRA" name="GRA"><label for="GRA">Graphique</label></br>
+                <input type="checkbox" id="ELE" name="ELE"><label for="ELE">Elec</label></br>
+                <input type="checkbox" id="MER" name="MER"><label for="MER">MER</label></br>
+                <input type="checkbox" id="SST" name="SST"><label for="SST">Fournisseur / SST</label></br>
+                <input type="checkbox" id="MOU" name="MOU"><label for="MOU">Client (MOE/MOU)</label></br>
+                <input type="checkbox" id="DIR" name="DIR"><label for="DIR">Direction</label></br>
+            </section2>
+        </br>
+
+        <label for="Traitement" class="classlabel">Traitement</label></br>
+        
+        <select name="Traitement" id="Traitement" class="classimput">
+                <option value="">Traitement</option>
+                <option value="Production Perso">Prod</option>
+                <option value="Mail">Mail</option>
+                <option value="Tel">Tel</option>        
+                <option value="Courrier">Courrier</option>        
+                <option value="Réunion Entrevue">Reunion</option>        
+                <option value="Diffusion (Websis,...)">Diff</option>        
+                <option value="Autres">Autres</option>        
+        </select></br></br>
+
+        <button class="button-success pure-button button-xlarge">
+                <i></i>&nbsp;Envoyer</button>
+
+        </form>
+
+  <!-- Validation -->
+  <div style="display:none;" id="message_validation">
+    <h2>Tâche correctement enregistrée </h2>
+  </div>
+
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script type="text/javascript">
+  
+    // get all data in form and return object
+    function getFormData() {
+        var form = document.getElementById("form_suivi");
+        var elements = form.elements; // all form elements
+        var fields = Object.keys(elements).map(function(k) {
+            if(elements[k].name !== undefined) {
+                return elements[k].name;
+                // special case for Edge's html collection
+            }else if(elements[k].length > 0){
+                return elements[k].item(0).name;
+            }
+        })
+        .filter(function(item, pos, self) {
+            return self.indexOf(item) == pos && item;
+        });
+
+        var data = {};
+        fields.forEach(function(k){
+            data[k] = elements[k].value;
+            var str = ""; // declare empty string outside of loop to allow it to be appended to for each item in the loop
+            var str2 ="";
+            if(elements[k].type === "checkbox"){ // special case for Edge's html collection
+                if(elements[k].checked === false){
+                    str2 = ""}
+                else{str2="X"}
+                str = str + str2 + ", "; // take the string and append the current checked value to the end of it, along with a comma and a space
+                data[k] = str.slice(0, -2); // remove the last comma and space from the  string to make the output prettier in the spreadsheet
+            }else if(elements[k].length){
+                for(var i = 0; i < elements[k].length; i++){
+                    if(elements[k].item(i).checked){
+                        str = str + elements[k].item(i).value + ", "; // same as above
+                        data[k] = str.slice(0, -2);
+                    }
+                }
+            }
+        });
+
+        // add form-specific values into the data
+        data.formDataNameOrder = JSON.stringify(fields);
+        data.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+
+        console.log(data);
+        return data;
+    }
+
+    function handleFormSubmit(event) {  // handles form submit withtout any jquery
+        event.preventDefault();           // we are submitting via xhr below
+        var data = getFormData();         // get the values submitted in the form
+        var url = event.target.action;  //
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        // xhr.withCredentials = true;
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            console.log( xhr.status, xhr.statusText )
+            console.log(xhr.responseText);
+            document.getElementById('form_suivi').style.display = 'none'; // hide form
+            document.getElementById('message_validation').style.display = 'block';
+            return;
+        };
+        // url encode form data for sending as post data
+        var encoded = Object.keys(data).map(function(k) {
+            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+        }).join('&')
+        xhr.send(encoded);
+    }
+
+    function loaded() {
+        console.log('contact form submission handler loaded successfully');
+        // bind to the submit event of our form
+        var form = document.getElementById('form_suivi');
+        form.addEventListener("submit", handleFormSubmit, false);
+        };
+    document.addEventListener('DOMContentLoaded', loaded, false);
+
+  </script>
+</div>
+</body>
+</html>
