@@ -29,10 +29,10 @@
         <form id="form_suivi" method="POST" action="https://script.google.com/macros/s/AKfycbxKWN0e2adN29p9x4TuLdqsoonGjzRpwIHeiL0OfgR-e4Il3Vc/exec">
 
             <label for="Prenom" class="classlabel">Prénom</label></br>
-            <input id="Prenom" name="Prenom" class="classimput" placeholder="Prénom"  autocomplete="off"></br>
+            <input id="Prenom" name="Prenom" class="classimput" placeholder="Prénom"  autocomplete="off" onchange="this.value = this.value.charAt(0).toUpperCase() + this.value.substr(1);"></br>
 
             <label for="Nom" class="classlabel">Nom</label></br>
-            <input type="text" name="Nom" class="classimput" placeholder="NOM"  autocomplete="off" onchange="this.value = this.value.charAt(0).toUpperCase() + this.value.substr(1);"></br>
+            <input type="text" name="Nom" class="classimput" placeholder="NOM"  autocomplete="off" style="text-transform: capitalize;"></br>
             
             <label for="Date" class="classlabel">Date d'anniversaire</label></br>
             <input type="Date" name="Date" placeholder="Choisir une date" class="classdate"/></br></br>
