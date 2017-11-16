@@ -28,22 +28,14 @@
 
         <form id="form_suivi" method="POST" action="https://script.google.com/macros/s/AKfycbxKWN0e2adN29p9x4TuLdqsoonGjzRpwIHeiL0OfgR-e4Il3Vc/exec">
 
-            <label for="Libelle" class="classlabel">Libellé</label></br>
-            <input id="Libelle" name="Libelle" class="classimput" placeholder="Libellé de la dépense"  autocomplete="off"></br>
+            <label for="Prénom" class="classlabel">Prénom</label></br>
+            <input id="Prénom" name="Prénom" class="classimput" placeholder="Prénom"  autocomplete="off"></br>
 
-            <label for="Montant" class="classlabel">Montant en €uros</label></br>
-            <input id="Montant" name="Montant" class="classimput" placeholder="Montant en € (utilser .)" autocomplete="off"></br>
-
-            <label for="Depense" class="classlabel">Type de dépense</label></br>           
-            <select name="Depense" id="Depense" class="classimput">
-                <option value="">Dépense</option>
-                <option value="Caro pour CJ">Caro dépense pour CJ</option>
-                <option value="Mathieu pour CJ">Mathieu dépense pour CJ</option>
-                <option value="Caro pour Mathieu">Caro dépense pour Mathieu</option>        
-                <option value="Mathieu pour Caro">Mathieu dépense pour Caro</option>        
-                <option value="CJ pour Caro">CJ dépense pour Caro</option>        
-                <option value="CJ pour Mathieu">CJ dépense pour Mathieu</option>        
-            </select></br></br>
+            <label for="Nom" class="classlabel">NOM</label></br>
+            <input id="Nom" name="Nom" class="classimput" placeholder="NOM"  autocomplete="off"></br>
+            
+            <label for="Date" class="classlabel">Date d'anniversaire</label></br>
+            <input type="Date" name="Date" placeholder="Choisir une date" class="classdate"/>
 
             <button class="button-success pure-button button-xlarge">
                     <i></i>&nbsp;Envoyer</button>
@@ -97,7 +89,7 @@
 
                 // add form-specific values into the data
                 data.formDataNameOrder = JSON.stringify(fields);
-                data.formGoogleSheetName = form.dataset.sheet || "Cjoint"; // default sheet name
+                data.formGoogleSheetName = form.dataset.sheet || "Anniv"; // default sheet name
 
                 console.log(data);
                 return data;
