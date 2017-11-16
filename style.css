@@ -92,6 +92,18 @@
             font-family: var(--main-font-family);
             font-size: var(--font-size-reponse); 
             }
+
+        .classimputmaj {
+            height:30px;
+            width:86%;
+            margin-left:7%;
+            font-size: var(--font-size-reponse);
+            text-transform: uppercase;        
+            border: 0;
+            color: var(--color-reponse);
+            background: transparent;
+            display:inline-block; }
+
         
     /* MISE EN FORME RADIO */
         .divradio {
