@@ -32,7 +32,7 @@
             <input id="Prenom" name="Prenom" class="classimput" placeholder="Prénom"  autocomplete="off"></br>
 
             <label for="Nom" class="classlabel">Nom</label></br>
-            <input id="Nom" name="Nom" class="classimput" placeholder="NOM"  autocomplete="off"></br>
+            <input type="text" name="Nom" class="classimput" placeholder="NOM"  autocomplete="off" onchange="this.value = this.value.charAt(0).toUpperCase() + this.value.substr(1);"></br>
             
             <label for="Date" class="classlabel">Date d'anniversaire</label></br>
             <input type="Date" name="Date" placeholder="Choisir une date" class="classdate"/></br></br>
