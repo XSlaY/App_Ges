@@ -16,8 +16,8 @@
             <ul id="menu_horizontal">
             <li><a class="link2" href="index.html">Tâche</a></li>
             <li><a class="link2" href="Compteur.html">Elec</a></li>
-            <li><a class="link1" href="course.html">Course</a></li>
-            <li><a class="link2" href="cjoint.html">CJoint</a></li>           
+            <li><a class="link2" href="course.html">Course</a></li>
+            <li><a class="link1" href="cjoint.html">CJoint</a></li>           
             <li><a class="link2" href="https://script.google.com/macros/s/AKfycbyVxkKu9mc1DMehLTyFyxwG6SJVdeWpGa1vE5eEtG_oilq9bHT6/exec">Liste</a></li>
             <li><a class="link2" href="https://drive.google.com/open?id=0B1dEKq5u4p-XVjZYbkdQSXZ3cHM">Ndf</a></li>
             </ul>
@@ -30,33 +30,23 @@
 
         <form id="form_suivi" method="POST" action="https://script.google.com/macros/s/AKfycbxKWN0e2adN29p9x4TuLdqsoonGjzRpwIHeiL0OfgR-e4Il3Vc/exec">
 
-            <label for="Fruits" class="classlabel">Fruits</label> </br>
-            <section1>
-                <input type="checkbox" id="Banane" name="Banane"><label for="Banane">Banane</label></br>
-                <input type="checkbox" id="Citron" name="Citron"><label for="Citron">Citron</label></br>
-                <input type="checkbox" id="Kiwi" name="Kiwi"><label for="Kiwi">Kiwi</label></br>
-            </section1>
-            <section2>
-                <input type="checkbox" id="Poire" name="Poire"><label for="Poire">Poire</label></br>               
-                <input type="checkbox" id="Pomme" name="Pomme"><label for="Pomme">Pomme</label></br>
-                <input type="checkbox" id="Raisin" name="Raisin"><label for="Raisin">Raisin</label></br>
-            </section2>
+            <label for="Libelle" class="classlabel">Libellé</label></br>
+            <input id="Libelle" name="Libelle" class="classimput" placeholder="Libellé de la dépense"  autocomplete="off"></br>
             </br>
 
-            <label for="Legumes" class="classlabel">Legumes</label> </br>
-            <section1>
-                <input type="checkbox" id="Carotte" name="Carotte"><label for="Carotte">Carotte</label></br>   
-                <input type="checkbox" id="Epinard" name="Epinard"><label for="Epinard">Epinard</label></br>
-                <input type="checkbox" id="Navet" name="Navet"><label for="Navet">Navet</label></br>
-                <input type="checkbox" id="Oignon" name="Oignon"><label for="Oignon">Oignon</label></br>
-            </section1>
-            <section2>
-                <input type="checkbox" id="Poireau" name="Poireau"><label for="Poireau">Poireau</label></br> 
-                <input type="checkbox" id="Patate" name="Patate"><label for="Patate">Patate</label></br>             
-                <input type="checkbox" id="Tomate" name="Tomate"><label for="Tomate">Tomate</label></br>
-                <input type="checkbox" id="Tomate" name="Tomate"><label for="Tomate">Tomate</label></br>                
-            </section2>
+            <label for="Montant" class="classlabel">Montant</label></br>
+            <input id="Montant" name="Montant" class="classimput" placeholder="Montant en € (utilser .)" autocomplete="off"></br>
             </br>
+
+            <select name="Depense" id="Depense" class="classimput">
+                <option value="">Dépense</option>
+                <option value="Choix1">Caro dépense pour CJ</option>
+                <option value="Choix2">Mathieu dépense pour CJ</option>
+                <option value="Choix3">Caro dépense pour Mathieu</option>        
+                <option value="Choix4">Mathieu dépense pour Caro</option>        
+                <option value="Choix5">CJ dépense pour Caro</option>        
+                <option value="Choix6">CJ dépense pour Caro</option>        
+            </select></br></br>
 
             <button class="button-success pure-button button-xlarge">
                     <i></i>&nbsp;Envoyer</button>
