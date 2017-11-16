@@ -87,11 +87,6 @@
             color: var(--color-reponse);
             background: transparent;
             display:inline-block; }
-        input::placeholder {
-            color: var(--color-reponse);
-            font-family: var(--main-font-family);
-            font-size: var(--font-size-reponse); 
-            }
 
         .classimputmaj {
             height:30px;
@@ -103,7 +98,12 @@
             color: var(--color-reponse);
             background: transparent;
             display:inline-block; }
-
+        
+        input::placeholder {
+            color: var(--color-reponse);
+            font-family: var(--main-font-family);
+            font-size: var(--font-size-reponse); 
+        }
         
     /* MISE EN FORME RADIO */
         .divradio {
