@@ -15,7 +15,7 @@
         <header>
             <ul id="menu_horizontal">
                 <li><a class="link2" href="index.html">Tâche</a></li>
-                <li><a class="link1" href="Compteur.html">Elec</a></li>
+                <li><a class="link1" href="compteur.php">Elec</a></li>
                 <li><a class="link2" href="course.html">Course</a></li>
                 <li><a class="link2" href="cjoint.html">CJoint</a></li>
                 <li><a class="link2" href="anniv.html">Anniv</a></li>                             
@@ -120,6 +120,16 @@
                 document.addEventListener('DOMContentLoaded', loaded, false);
                     
         </script>
+
+
+        <?php
+        // Clé de la spreadsheet
+        $key = '1dES2_n8FPGsqZwp__v8C6dGhVRbtE2FrEutuzKOU3Nk';
+
+        $spreadsheet = sprintf('https://spreadsheets.google.com/feeds/list/%s/1/public/values?alt=json', $key);
+        $data = json_decode(file_get_contents($spreadsheet), true);
+        ?>
+
     </div>
 </body>
 </html>
