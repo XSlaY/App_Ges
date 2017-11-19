@@ -121,15 +121,6 @@
                     
         </script>
 
-
-        <?php
-        // Clé de la spreadsheet
-        $key = '1dES2_n8FPGsqZwp__v8C6dGhVRbtE2FrEutuzKOU3Nk';
-
-        $spreadsheet = sprintf('https://spreadsheets.google.com/feeds/list/%s/1/public/values?alt=json', $key);
-        $data = json_decode(file_get_contents($spreadsheet), true);
-        ?>
-
     </div>
 </body>
 </html>
